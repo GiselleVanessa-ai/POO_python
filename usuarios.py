@@ -51,6 +51,11 @@ class Usuario:
         else:
             print("el usuario no existe")
 
+    #certificado se dejara para aplicar polimorfismo mas adelante
+    def consultar_certificado(self):
+        #cada clase hija decidira como implementar este certificado
+        pass
+
 
 #crear una instancia de la clase usuario
 
@@ -83,4 +88,61 @@ usuario_1.ver_usuario()
 #llamar metodos delete
 usuario_2.eliminar_usuario()
 usuario_2.ver_usuario()
+
+#-----------------------------------------------------
+#APLICANDO LOS 4 PILARES DE POO
+#-----------------------------------------------------
+
+#herencia 
+
+class Aprendiz(Usuario):
+    def __init__(self, id_usuario : int, documento, nombre : str, apellido : str, correo, telefono, direccion, programa, ficha, resultados=[]):
+
+        #super
+        super().__init__(id_usuario, documento, nombre, apellido, correo, telefono, direccion)
+
+        #atributos de aprendiz
+        self.programa = programa
+        self.ficha = ficha
+
+
+        #encapsulamiento: atributo privado para almacenar los resultados del aprendiz
+        self.__resultados = resultados#privado
+
+        #GET consultar o ver el atributo 
+    def get_resultados(self):
+        return self.__resultados
+        # #SET modificar o actualizar el atributo
+    def set_resultados(self, notas):
+        self.__resultados.append(notas)
+        print(f"resultados de {aprendiz_1.nombre}. Total notas: {len(self.__resultados)}")
+
+
+        #polimorfismo
+    def consultar_certificado(self):
+        print(f"[cenrtificado aprendiz] generando certificado de notas del programa {self.programa} para {self.nombre}")
+
+aprendiz_1 = Aprendiz(3, 125478932, "santiago", "lopez", "santiago@gmail.com", 786412384, "calle 587", "desarrollo de software", "ficha 412")
+print(aprendiz_1.nombre)
+
+print(f"imprimir atributo privado {aprendiz_1.get_resultados()}")
+print(f"imprimir atributopublico {aprendiz_1.nombre}")
+
+
+class Instructor(Usuario):
+    def __init__(self, id_usuario : int, documento, nombre : str, apellido : str, correo, telefono, direccion, perfil_profesional, anios_experiencia):
+        super().__init__(id_usuario, documento, nombre, apellido, correo, telefono, direccion)
+        self.perfil_profesional = perfil_profesional
+        self.anios_experiencia = anios_experiencia
+
+                #polimorfismo
+    def consultar_certificado(self):
+        print(f"[cenrtificado instructor] generando constancia laboral para {self.nombre}, perfil: {self.perfil_profesional}")
+    
+instructor_1 = Instructor(4, 125478932, "sofia", "perez", "astp@gmail.com", 786412554, "calle 87", "ingenieria software", 5)
+print(instructor_1.nombre)
+
+
+aprendiz_1.consultar_certificado()
+instructor_1.consultar_certificado()
 
