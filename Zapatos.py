@@ -35,6 +35,10 @@ class Zapatos:
     def vender_zapato(self):
         print(f"el zapato de la marca {self.marca} con el id {self.id_zapato} ha sido vendido por {self.precio} pesos")
 
+         #POLIMORFISMO
+    def mostrar_tipo(self):
+        pass
+
 #instancia
 
 zapato_1 = Zapatos(1, "Bata", 35, "negro", "cuero", 100000)
@@ -64,3 +68,46 @@ zapato_2.eliminar_zapato()
 #vender zapato
 zapato_1.vender_zapato()
 zapato_2.vender_zapato() 
+
+
+#-------------------
+
+class sandalias(Zapatos):
+    def __init__(self, id_zapato, marca, talla, color, material, precio, tipo_abertura):
+        #super
+        super().__init__(id_zapato, marca, talla, color, material, precio)
+        #atributos de aprendiz
+        self.tipo_abertura = tipo_abertura
+
+ # 4. POLIMORFISMO
+    # Sobrescribimos el método de la clase padre para darle un comportamiento específico
+    def mostrar_tipo(self):
+        print(f"🎓 [CERTIFICADO DE APRENDIZ] Generando certificado de notas del programa {self.programa} para {self.nombre}.")
+        
+
+class tacones(Zapatos):
+    def __init__(self, id_zapato, marca, talla, color, material, precio, altura_tacon, tipo_tacon):
+        #super
+        super().__init__(id_zapato, marca, talla, color, material, precio)
+        #atributos de aprendiz
+        self.altura_tacon = altura_tacon
+        self.tipo_tacon = tipo_tacon
+
+    # 4. POLIMORFISMO
+    # Sobrescribimos el método de la clase padre para darle un comportamiento específico
+    def mostrar_tipo(self):
+        print(f"🎓 [CERTIFICADO DE APRENDIZ] Generando certificado de notas del programa {self.programa} para {self.nombre}.")
+
+class botas(Zapatos):
+    def __init__(self, id_zapato, marca, talla, color, material, precio, altura_cania):
+        #super
+        super().__init__(id_zapato, marca, talla, color, material, precio)
+        #atributos de aprendiz
+        self.altura_cania = altura_cania
+
+    
+    # 4. POLIMORFISMO
+    # Sobrescribimos el método de la clase padre para darle un comportamiento específico
+    def mostrar_tipo(self):
+        print(f"🎓 [CERTIFICADO DE APRENDIZ] Generando certificado de notas del programa {self.programa} para {self.nombre}.")
+
