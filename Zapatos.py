@@ -82,8 +82,9 @@ class sandalias(Zapatos):
  # 4. POLIMORFISMO
     # Sobrescribimos el método de la clase padre para darle un comportamiento específico
     def mostrar_tipo(self):
-        print(f"🎓 [CERTIFICADO DE APRENDIZ] Generando certificado de notas del programa {self.programa} para {self.nombre}.")
-        
+        print(
+            f"👡 Sandalia con abertura tipo {self.tipo_abertura}"
+        )
 
 class tacones(Zapatos):
     def __init__(self, id_zapato, marca, talla, color, material, precio, altura_tacon, tipo_tacon):
@@ -96,8 +97,9 @@ class tacones(Zapatos):
     # 4. POLIMORFISMO
     # Sobrescribimos el método de la clase padre para darle un comportamiento específico
     def mostrar_tipo(self):
-        print(f"🎓 [CERTIFICADO DE APRENDIZ] Generando certificado de notas del programa {self.programa} para {self.nombre}.")
-
+        print(
+            f"👠 Tacón {self.tipo_tacon} de {self.altura_tacon} cm"
+        )
 class botas(Zapatos):
     def __init__(self, id_zapato, marca, talla, color, material, precio, altura_cania):
         #super
@@ -109,5 +111,23 @@ class botas(Zapatos):
     # 4. POLIMORFISMO
     # Sobrescribimos el método de la clase padre para darle un comportamiento específico
     def mostrar_tipo(self):
-        print(f"🎓 [CERTIFICADO DE APRENDIZ] Generando certificado de notas del programa {self.programa} para {self.nombre}.")
+        print(
+            f"🥾 Bota con caña de {self.altura_cania} cm"
+        )
 
+# instancia de las clases hijas
+
+sandalia_1 = sandalias(3, "Havaianas", 38, "verde", "goma", 50000, "frontal")
+
+tacon_1 = tacones(2, "Mussi", 38, "Rojo", "Sintetico", 250000, 10, "Aguja")
+
+bota_1 = botas(3, "Clarks", 39, "Cafe", "Cuero", 300000, 25)
+
+# LLAMADO DE MÉTODOS
+sandalia_1.crear_zapato()
+tacon_1.crear_zapato()
+bota_1.crear_zapato()
+
+sandalia_1.mostrar_tipo()
+tacon_1.mostrar_tipo()
+bota_1.mostrar_tipo()
