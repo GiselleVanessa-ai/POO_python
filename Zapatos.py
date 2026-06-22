@@ -78,13 +78,13 @@ class sandalias(Zapatos):
         super().__init__(id_zapato, marca, talla, color, material, precio)
         #atributos de aprendiz
         self.tipo_abertura = tipo_abertura
+        # ENCAPSULAMIENTO: Usamos un atributo privado para almacenar los resultados académicos del aprendiz
+        self.__precio = precio #Privado
 
  # 4. POLIMORFISMO
     # Sobrescribimos el método de la clase padre para darle un comportamiento específico
     def mostrar_tipo(self):
-        print(
-            f"👡 Sandalia con abertura tipo {self.tipo_abertura}"
-        )
+        print(f"👡 Sandalia con abertura tipo {self.tipo_abertura}")
 
 class tacones(Zapatos):
     def __init__(self, id_zapato, marca, talla, color, material, precio, altura_tacon, tipo_tacon):
@@ -93,6 +93,9 @@ class tacones(Zapatos):
         #atributos de aprendiz
         self.altura_tacon = altura_tacon
         self.tipo_tacon = tipo_tacon
+         # ENCAPSULAMIENTO: Usamos un atributo privado para almacenar los resultados académicos del aprendiz
+        self.__precio = precio #Privado
+
 
     # 4. POLIMORFISMO
     # Sobrescribimos el método de la clase padre para darle un comportamiento específico
@@ -107,6 +110,10 @@ class botas(Zapatos):
         #atributos de aprendiz
         self.altura_cania = altura_cania
 
+        # ENCAPSULAMIENTO: Usamos un atributo privado para almacenar los resultados académicos del aprendiz
+        self.__precio = precio #Privado
+
+
     
     # 4. POLIMORFISMO
     # Sobrescribimos el método de la clase padre para darle un comportamiento específico
@@ -117,7 +124,7 @@ class botas(Zapatos):
 
 # instancia de las clases hijas
 
-sandalia_1 = sandalias(3, "Havaianas", 38, "verde", "goma", 50000, "frontal")
+sandalia_1 = sandalias(3, "Havaianas", 38, "verde", "goma", 50000, "fish_mouth")
 
 tacon_1 = tacones(2, "Mussi", 38, "Rojo", "Sintetico", 250000, 10, "Aguja")
 
